@@ -2,11 +2,13 @@
 
 **One local dashboard for Bluetooth LE, Wi‑Fi, and satellite TV — live scans, spectrum, capture, and playback on hardware you control.**
 
-SIGINT Radio Monitor (LE HSCR) is a **dense RF lab console** in the browser. Plug in USB Bluetooth and Wi‑Fi adapters (and optionally a DVB‑S tuner or Sat>IP box), open the UI, and work across three radio domains without juggling a dozen terminal tools. BLE devices appear on a radar with iBeacon intelligence; Wi‑Fi networks show spectrum waterfalls and probe traffic; satellite transponders scan, lock, and play FTA channels with live signal meters.
+SIGINT Radio Monitor — product code **LE HSCR** (repo `le_hscr`) is a **dense RF lab console** in the browser. Plug in USB Bluetooth and Wi‑Fi adapters (and optionally a DVB‑S tuner or Sat>IP box), open the UI, and work across three radio domains without juggling a dozen terminal tools. BLE devices appear on a radar with iBeacon intelligence; Wi‑Fi networks show spectrum waterfalls and probe traffic; satellite transponders scan, lock, and play FTA channels with live signal meters.
 
 Built for **authorized research** on networks and airspace you own or may legally test — home lab, bench, or field kit. Runs **locally** (Docker Kali recommended); not cloud SaaS.
 
 **Made by [Logic Encoder](https://logicencoder.com)**
+
+**Product name:** SIGINT Radio Monitor · **LE HSCR** · private repo `le_hscr`
 
 Private source: [logicencoder/le_hscr](https://github.com/logicencoder/le_hscr)
 
@@ -26,43 +28,111 @@ Everything updates in **real time** over WebSocket — device lists, spectrum tr
 
 ---
 
-## Example use cases
+## Feature examples (two per capability)
 
-### 1. Track BLE beacons in a venue
+#### KPI strip
+1. You pin three retail beacons — pinned count stays at 3 while walk-in traffic spikes updates/min without losing your reference devices.
+2. Avg RSSI drops 15 dB during a session — you spot interference before a deployment go-live.
 
-You are mapping which iBeacons are active in a building you operate (your store, your event space).
+#### BLE Control — scan & power
+1. Turn **Scan OFF** during a meeting, then **Scan now** for a 10 s snapshot without leaving passive mode all day.
+2. **RF reset** after a stuck adapter: power cycles hci0 and scan resumes without rebooting Docker.
 
-1. Start the stack with `./start-kali.sh` and open the UI.
-2. Open **BT**, turn **Scan ON** (active mode for faster discovery).
-3. Watch the **radar** and device list — iBeacon and Eddystone badges appear on rows automatically.
-4. Click a device → open detail → **Watch beacon** on its UUID.
-5. When that UUID is seen again, you get a **toast alert** (`ble_alert`) even if the random MAC rotated.
-6. Export the session as **JSON** or **replay** the last hour from DuckDB to see RSSI movement on the **heatmap** and 60‑minute chart.
+#### Active vs passive scan
+1. **Active** during a mall walk-through — you discover more unknown advertisers in 60 s.
+2. **Passive** in a quiet lab — you avoid extra scan requests while logging adv rate on channel 37 only.
 
-**What you get:** proof of which beacons are live, when they appeared, and how signal strength changed — without a separate sniffer app.
+#### Ping area (12 s burst)
+1. Before a venue install you run **Ping area** — RSSI chart confirms the beacon is heard at the back door.
+2. Compare two booth placements: ping at spot A, move hardware, ping at spot B — strongest signal wins.
 
-### 2. Wi‑Fi lab on your own access point
+#### Radar (classic / pulse)
+1. Classic radar during a trade show — see which quadrant new wearables appear from as crowds move.
+2. Pulse radar for a demo video — visual pop when a tracked tag re-enters range.
 
-You own a test AP and want to characterize spectrum use and capture a WPA handshake for crack testing in your lab.
+#### Adv traffic waterfall & channels 37/38/39
+1. Waterfall shows adv/s spike at 14:05 — correlates with a vendor turning on 50 new tags.
+2. Channel strip shows traffic stuck on 38 — you relocate a noisy USB3 hub away from the BT dongle.
 
-1. Attach **two Wi‑Fi dongles** — in **Settings**, assign one to **scan/connect** and one to **monitor**.
-2. **Wi‑Fi → Scan** — rescan, open **spectrum** (trace + waterfall + channel occupancy) on 2.4 and 5 GHz.
-3. **Wi‑Fi → Probes** — enable monitor mode; see which SSIDs nearby devices are probing for.
-4. **Wi‑Fi → Capture** — start EAPOL capture on the monitor radio, or run **Handshake lab** with your AP’s BSSID for 30 seconds.
-5. Download **pcap** or **hc22000** from capture history when EAPOL frames appear.
-6. On **Lab**, run **DuckDB analytics** (channel distribution) or **deauth check** only on the SSID you control.
+#### RSSI heatmap & event log
+1. 60 s heatmap while walking a hallway — color band shows where a fixed beacon fades.
+2. Filter log to **New** only — ignore repeat packets from phones you already catalogued.
 
-**What you get:** one screen for scan → observe → capture → export — instead of memorizing `airodump-ng` / `tcpdump` flags for each step.
+#### Device list — search, track, export
+1. Search `Apple` — isolate AirPods and export **CSV** for a client report.
+2. Enable **Tracked** filter — watch five contractor badges only during an event teardown.
 
-### Bonus — satellite FTA watch (when DVB hardware is connected)
+#### Device detail — iBeacon watch & RSSI chart
+1. Watch UUID `E2C56DB5-...` — get alerted when that UUID returns even if MAC randomizes hourly.
+2. 60 min chart shows RSSI sawtooth — device is on a moving cart, not stationary.
 
-1. **DVB → Scan** — enable DVB power, pick satellite and LNB/DiSEqC, run transponder scan.
-2. Browse **TV/Radio** services; click a transponder to **tune**.
-3. **Watch** — play the channel in-browser (MPEG‑TS low latency or HLS); live **Sig/SNR/quality** meters in the header.
-4. **TS Analyzer** — PID table and SI tree on the locked transponder.
+#### BT Tools — Bettercap / Bluelog / replay
+1. Import a **Bluelog** CSV from yesterday and overlay manufacturers on today's scan.
+2. **Replay** DuckDB at 4× speed — prove a beacon was absent during a security window.
+
+#### BLE alerts
+1. Rule: alert when UUID watchlist device RSSI > −55 — security knows VIP tag entered the floor.
+2. Toast + beep when a banned manufacturer ID reappears after you cleared the session.
+
+#### Wi‑Fi Scan — networks & spectrum
+1. Rescan after moving AP — waterfall shows channel 6 congestion; you move SSID to channel 11.
+2. MHz zoom on trace isolates a narrow spur on 2.437 GHz — faulty microwave in break room.
+
+#### Wi‑Fi Probes
+1. See phones probing `CorpWiFi-Guest` that no longer exists — cleanup stale SSID from marketing.
+2. Export probe CSV — top SSID chart shows `FreeAirport` is the most probed name in the lobby.
+
+#### Wi‑Fi Clients (airodump)
+1. Start airodump on monitor radio — list shows laptop stuck on old AP while phone roams correctly.
+2. Clear clients feed between tests so only post-change associations appear.
+
+#### Wi‑Fi Capture & handshake lab
+1. 30 s **Handshake lab** on your lab AP BSSID — download hc22000 when EAPOL appears.
+2. tcpdump capture during a controlled client reconnect — pcap for Wireshark review class.
+
+#### Wi‑Fi Lab — deauth & analytics
+1. **Deauth check** on your own test SSID — confirm injection works before a red-team exercise.
+2. DuckDB cross-radio: same vendor OUI seen on BLE list and Wi‑Fi probe — one vendor, two radios.
+
+#### Wi‑Fi Adapter — connect & hotspot
+1. Connect managed radio to `Lab-5G` for internet while monitor radio sniffs probes.
+2. Start **hotspot** `SIGINT-AP` — connect a phone for isolated capture demos.
+
+#### Wi‑Fi vuln scan (AP detail)
+1. Click home router row → **vuln scan** — nmap + searchsploit lists known CVEs for that firmware family.
+2. Run wash on lab WPS-enabled AP — document WPS state for hardening checklist.
+
+#### DVB Scan — transponders & services
+1. Full scan on 23.5°E — table fills with lock/SNR; you bookmark one FTA news TP.
+2. **NIT scan** finds new services after provider reshuffle — update favorites list.
+
+#### DVB Watch — in-browser TV
+1. Play FTA news in **MPEG‑TS** mode — sub-second zapping between two TPs on same sat.
+2. Switch to **HLS** on a weak TP — player buffers while Sig/SNR meters show margin.
+
+#### DVB TS Analyzer
+1. Tune TP — PID table shows video 0x101 + audio 0x102; confirm no unexpected CA PID.
+2. SI tree reveals service provider name mismatch — wrong bouquet selected in DiSEqC.
+
+#### USB tab
+1. **Emergency recover** when BT dongle vanished after hub glitch — device re-enumerates without host reboot.
+2. **Reset ALL** before a client demo — clean BLE/Wi‑Fi/SAT session plus USB refresh in one click.
+
+#### Logs — cross-radio overview
+1. Hardware card shows Wi‑Fi monitor missing — you replug dongle before starting capture.
+2. Filter **Err** — single pane for BLE scan fail + SAT driver errors during setup.
+
+#### Settings & UI prefs sync
+1. Assign wlan1=monitor, wlan0=scan on laptop — settings follow via **ui-prefs** to desktop browser on LAN.
+2. Beacon watchlist synced server-side — alert fires on phone browser and bench PC simultaneously.
+
+#### Real-time WebSocket
+1. Open UI on two screens — both update when a new BLE device appears; no manual refresh.
+2. SAT scan progress bar advances live while you read Wi‑Fi spectrum on another tab.
 
 ---
 
+## Dashboard
 ## Dashboard — five main areas
 
 ### BT (Bluetooth LE) — default tab
