@@ -14,7 +14,24 @@ Private source: [logicencoder/le_hscr](https://github.com/logicencoder/le_hscr)
 
 ---
 
-## What you can do
+## Tech stack
+
+| Layer | Technologies |
+|-------|----------------|
+| API | Python 3, FastAPI, Uvicorn, Pydantic, ORJSON |
+| UI | Single-page HTML/JS — canvas/SVG viz; HLS.js + mpegts.js for SAT |
+| Real-time | WebSocket wire contract (pytest-validated) |
+| BLE | Bleak, BlueZ, btmon; optional Bettercap, Bluelog |
+| Wi‑Fi | NetworkManager/nmcli, iw; tcpdump, hcxdumptool, airodump-ng, aircrack-ng |
+| Recon | nmap, searchsploit, nikto, arp-scan, wash, routersploit (light) |
+| SAT | dvb-tools, ffmpeg; Sat>IP client; optional NVENC |
+| Storage | DuckDB session DB; pcap and tooling logs on disk |
+| Runtime | Docker (Kali rolling image) or native Linux |
+| Quality | pytest, Playwright E2E, CI smoke on push |
+
+---
+
+## Radio domains
 
 | Domain | In plain language |
 |--------|-------------------|
@@ -28,7 +45,7 @@ Everything updates in **real time** over WebSocket — device lists, spectrum tr
 
 ---
 
-## Feature examples (two per capability)
+## Operator workflows
 
 #### KPI strip
 1. You pin three retail beacons — pinned count stays at 3 while walk-in traffic spikes updates/min without losing your reference devices.
@@ -132,7 +149,6 @@ Everything updates in **real time** over WebSocket — device lists, spectrum tr
 
 ---
 
-## Dashboard
 ## Dashboard — five main areas
 
 ### BT (Bluetooth LE) — default tab
@@ -303,34 +319,8 @@ Single Wi‑Fi dongle can usually do **scan or monitor**, not both simultaneousl
 
 ---
 
-## What it does not do
+**Scope:** a local lab bench for radios you own — real USB adapters required; the satellite side needs a tuner or a Sat>IP feed, and the Ubertooth dongle unlocks its full UI. Deauth, capture, and vulnerability tools are built for your own lab networks. Captures, the session database, and `.env` stay on your machine.
 
-- **Not** a cloud or multi-tenant service — local machine only; no built-in telemetry
-- **Not** for unauthorized surveillance — deauth, capture, and vuln tools are for **your** lab networks
-- **Not** zero-hardware — real USB adapters required; SAT needs tuner or Sat>IP
-- **Not** a mobile app — browser UI optimized for desktop/laptop lab bench
-- **Not** guaranteed full Ubertooth UI without the dongle — hook is optional
-
-Captures, session database, and `.env` stay on your machine — not published in the overview repo.
-
----
-
-## Tech stack
-
-| Layer | Technologies |
-|-------|----------------|
-| API | Python 3, FastAPI, Uvicorn, Pydantic, ORJSON |
-| UI | Single-page HTML/JS — canvas/SVG viz; HLS.js + mpegts.js for SAT |
-| Real-time | WebSocket wire contract (pytest-validated) |
-| BLE | Bleak, BlueZ, btmon; optional Bettercap, Bluelog |
-| Wi‑Fi | NetworkManager/nmcli, iw; tcpdump, hcxdumptool, airodump-ng, aircrack-ng |
-| Recon | nmap, searchsploit, nikto, arp-scan, wash, routersploit (light) |
-| SAT | dvb-tools, ffmpeg; Sat>IP client; optional NVENC |
-| Storage | DuckDB session DB; pcap and tooling logs on disk |
-| Runtime | Docker (Kali rolling image) or native Linux |
-| Quality | pytest, Playwright E2E, CI smoke on push |
-
----
 
 ## Related repositories
 
