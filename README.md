@@ -1,5 +1,7 @@
 # LE HSCR — SIGINT Radio Monitor
 
+![LE HSCR — DVB-S satellite scan with live transponder and channel tables](assets/le-hscr.png)
+
 **One local dashboard for Bluetooth LE, Wi‑Fi, and satellite TV — live scans, spectrum, capture, and playback on hardware you control.**
 
 SIGINT Radio Monitor — product code **LE HSCR** (repo `le_hscr`) is a **dense RF lab console** in the browser. Plug in USB Bluetooth and Wi‑Fi adapters (and optionally a DVB‑S tuner or Sat>IP box), open the UI, and work across three radio domains without juggling a dozen terminal tools. BLE devices appear on a radar with iBeacon intelligence; Wi‑Fi networks show spectrum waterfalls and probe traffic; satellite transponders scan, lock, and play FTA channels with live signal meters.
