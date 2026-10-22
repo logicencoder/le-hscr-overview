@@ -29,7 +29,7 @@ The USB area helps inspect attached equipment, while shared logs bring activity 
 
 ## A workspace for laboratory use
 
-Connection indicators, filters and global controls keep the current monitoring context visible. The dashboard is designed for a supported local radio setup; hardware availability determines which areas can be used. The complete product tour should eventually include representative views from each radio area.
+Connection indicators, filters and global controls keep the current monitoring context visible. The dashboard is designed for a supported local radio setup; hardware availability determines which areas can be used.
 
 ---
 
