@@ -15,21 +15,32 @@ Radio work can involve several devices, signal types and specialist utilities. L
 
 Inspect nearby Bluetooth devices and follow their activity from a dedicated workspace. Device information, signal readings and observation history help distinguish a recurring device from a brief appearance. Filters make a busy environment easier to examine without losing the broader picture.
 
+The Bluetooth view is useful for comparing repeated observations of a nearby device. Signal and history context help keep a brief appearance distinct from a device seen throughout the session.
+
 ## Wi-Fi investigation
 
 The Wi-Fi area brings network discovery and related observations together. Move between the available views to inspect access points, connected activity and signal context. The benefit is a consistent place to compare what the radio sees instead of reconstructing the picture from separate utilities.
+
+Different Wi-Fi observations answer different questions about the surrounding radio environment. The shared workspace keeps those views available without requiring a separate application for each check.
 
 ## Satellite reception
 
 Satellite views support examining reception and programme information alongside the other radio domains. Available playback and stream controls let the operator connect the observed signal with usable output. Reception depends on compatible equipment and the signals available to that equipment.
 
+Reception work connects source information with the output the equipment can actually provide. Inspect the available programme context before choosing a playback or stream action.
+
 ## Devices and shared logs
 
 The USB area helps inspect attached equipment, while shared logs bring activity across radio areas into one view. This is useful when a problem may involve a device connection rather than the selected signal. Follow the relevant output before changing the monitoring setup.
 
+Attached hardware and the selected radio source can both explain an interruption. Shared device information and logs provide a practical starting point for narrowing the issue.
+
 ## A workspace for laboratory use
 
 Connection indicators, filters and global controls keep the current monitoring context visible. The dashboard is designed for a supported local radio setup; hardware availability determines which areas can be used.
+
+The dashboard brings several laboratory activities into a consistent interface. Use the areas supported by the connected equipment and keep their operating context visible throughout the session.
+
 
 ---
 
