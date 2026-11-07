@@ -33,6 +33,8 @@ The satellite area detects and identifies the tuner, powers it, and tunes by tra
 
 The USB area lists attached devices with their status and can refresh or reset a device, which is the first check when an adapter disappears. The Logs tab merges the events of all radios into one stream with filters, and the satellite and USB areas keep their own logs.
 
+![LE HSCR USB topology and attach log](assets/le-hscr-usb-topology-device-attach-log.png)
+
 ## Workspace
 
 Panels are separated by draggable splitters across the key figures, controls, visualisation, lists and spectrum layers. Settings and layout are stored in the browser and synchronised through the server, so several browsers on the local network share the same preferences, and each tab keeps its own event log. Capture files and live logs stay on the local disk.
@@ -45,4 +47,5 @@ See [REPOS.md](REPOS.md) for related repositories.
 
 **[Logic Encoder](https://logicencoder.com)** · [GitHub](https://github.com/logicencoder) · [Contact](https://logicencoder.com/contact/)
 
-<!-- TODO(screenshots, 2026-11-07): one screenshot only; more views from the laptop with Wi-Fi and Bluetooth -->
+
+<!-- TODO(screenshots, 2026-11-07): Bluetooth and Wi-Fi views need a capture without neighbours' device identifiers; DVB/SDR views -->
