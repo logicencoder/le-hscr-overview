@@ -44,3 +44,5 @@ Private code: [le_hscr](https://github.com/logicencoder/le_hscr)
 See [REPOS.md](REPOS.md) for related repositories.
 
 **[Logic Encoder](https://logicencoder.com)** · [GitHub](https://github.com/logicencoder) · [Contact](https://logicencoder.com/contact/)
+
+<!-- TODO(screenshots, 2026-11-07): one screenshot only; more views from the laptop with Wi-Fi and Bluetooth -->
