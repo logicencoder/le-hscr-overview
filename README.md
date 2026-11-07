@@ -21,9 +21,13 @@ The Overview tab summarises all radios on one screen: Bluetooth, Wi-Fi and monit
 
 The Bluetooth tab scans actively or passively and parses iBeacon and Eddystone advertisements into readable fields. A radar plots the nearby devices by signal strength, a channel strip shows activity on the advertising channels, and a heatmap shows where and when a device appears. Alerts follow a beacon UUID watchlist that is stored on the server so every browser sees the same list, and the observation history can be replayed. Scan logs from other tools can be imported, and the cross-radio analytics relate Bluetooth sightings to the other radios.
 
+![LE HSCR Bluetooth LE radar, heatmap and device list](assets/le-hscr-bluetooth-le-radar-heatmap-devices.png)
+
 ## Wi-Fi
 
 The Wi-Fi tab scans for networks in managed or monitor mode and shows a spectrum trace with a waterfall. The trace can be panned and zoomed in megahertz while the waterfall keeps the full band history. Channel occupancy is shown in separate rows for 2.4 and 5 GHz, with a view of probe requests and of the clients seen. Adapter settings sit on the same tab.
+
+![LE HSCR Wi-Fi scan with spectrum, heatmap and network list](assets/le-hscr-wifi-scan-spectrum-heatmap-networks.png)
 
 ## Satellite reception
 
@@ -48,4 +52,3 @@ See [REPOS.md](REPOS.md) for related repositories.
 **[Logic Encoder](https://logicencoder.com)** · [GitHub](https://github.com/logicencoder) · [Contact](https://logicencoder.com/contact/)
 
 
-<!-- TODO(screenshots, 2026-11-07): Bluetooth and Wi-Fi views need a capture without neighbours' device identifiers; DVB/SDR views -->
