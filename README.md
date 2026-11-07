@@ -1,6 +1,6 @@
 # LE HSCR — Radio Monitoring Workspace
 
-![LE HSCR — Radio Monitoring Workspace workspace](assets/le-hscr.png)
+![LE HSCR — Radio Monitoring Workspace workspace](assets/le-hscr-radio-monitoring-workspace.png)
 
 LE HSCR is a single-page radio monitoring console for Bluetooth LE, Wi-Fi and satellite reception. One browser window shows what the connected adapters and tuner can see, keeps the history of what was seen and puts the logs of all radios in one stream. It runs in a Docker container with the USB adapters passed through, or directly on a prepared host, and by default it stays on the local network with no telemetry. It is meant for authorised radio research on equipment and networks the operator owns or is allowed to test.
 
